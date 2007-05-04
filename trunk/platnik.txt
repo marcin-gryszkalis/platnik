@@ -1,0 +1,76 @@
+haslo1 = lzpovzyswnuw
+haslo2 = lzpovzyswnvw
+
+haslo1 = lz po vz ys wn uw (ln)
+
+1haslo = uw yo t{ nr tn sz 
+
+haslo0 = lz po vz ys wn tw
+
+000000 = tw qr uv mn ps tw = 30
+
+0000000= tw qr uv mn ps tw mn
+
+100000 = uw qr uv mn ps tw = 30
+
+111111 = uw pr tv ln qs uw = 31
+
+222222 = vw sr wv on rs vw = 32
+
+333333 = ww rr vv nn ss ww = 33
+
+444444 = xw mr yv qn ls xw = 34
+
+555555 = yw lr xv pn ms yw = 35
+
+!!!!!! = uv ps tw lo qr uv = 21
+
+AAAAA0 = ux pm ty lq ql tw = 41
+
+ggggg0 = {z no z{ rs on tw = 67
+
+888888 = lw yr mv un xs lw = 38
+
+999999 = mw xr lv tn ys mw = 39
+
+JJJJJ0 = nx {m oy wq zl tw = 4a
+
+KKKKK0 = ox zm ny vq {l tw = 4b
+
+LLLLL0 = px um qy yq tl tw = 4c
+
+MMMMM0 = qx tm py xq ul tw = 4d
+
+NNNNN0 = rx wm sy {q vl tw = 4e
+
+OOOOO0 = sx vm ry zq wl tw = 4f
+
+00000000000000000000 = tw qr uv mn ps tw mn nm uv qr nm ps mn ol ol uv ps uv uv ps mn uv sp sp
+                        0  1  2  3  4  0  3  5  2  1  5  4  3  6  6  2  4  2  2  4  3  2  x  x
+ 
+[6c-7b] [l-{]
+
+start: 
+l-m-n-o-p-q-r-s-t-u-v-w-x-y-z-{
+
+
+
+0:  t-u-v-w-x-y-z-{-l-m-n-o-p-q-r-s - swap 8
+1:  q-p-s-r-m-l-o-n-y-x-{-z-u-t-w-v - swap 4 + swap 1
+2:  u-t-w-v-y-x-{-z-m-l-o-n-q-p-s-r - swap 8 + swap 1
+3:  m-l-o-n-q-p-s-r-u-t-w-v-y-x-{-z - swap 1
+4:  p-q-r-s-l-m-n-o-x-y-z-{-t-u-v-w - swap 4
+5:  n-   -m                         - swap 2
+6:  o-   -l                         - swap 2 + swap 1
+7:  s     p                         - swap 
+89abcdef01234567
+54761032dcfe98ba
+98badcfe10325476
+1032547698badcfe
+45670123cdef89ab
+
+$enc = shift;
+$key = "tuvwxyz{lm,qpsrmlonyx,utwvyx{zml,mlonqpsrut,pqrslmnoxy";
+@pos = split ",", $key;
+
+
