@@ -67,7 +67,7 @@ bazy danych).
 <p>
 <b>Uwaga</b>: Misie z firmy Koala (ja nie mam z nimi nic wspolnego!) na podstawie ponizszych informacji napisaly program,
 ktory odzyskuje hasla Platnika. Programik jest darmowy i mozna go znalezc tutaj:
-<b><a href="http://koala.pl/Index2.php?page=Download&amp;lang=pl">Koala Ratownik</a></b>
+<b><a href="http://koala.pl/Index2.php?page=KoalaRatownik&amp;lang=pl">Koala Ratownik</a></b>
 
 <p>Has³a trzymane s± w rejestrze systemu Windows, has³o administratora w kluczu
 <span class="tt">HKEY_LOCAL_MACHINE\SOFTWARE\PROKOM Software SA\P³atnik\5.01.001\Admin</span>
@@ -152,5 +152,16 @@ W razie problemów:
 <a href="http://validator.w3.org/check?uri=referer">[Valid HTML]</a><br>
 <span style="font-family: monospace; ">$Id$</span>
 </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-896002-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
 </body>
 </html>
