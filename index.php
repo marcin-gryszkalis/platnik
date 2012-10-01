@@ -5,24 +5,26 @@ if (isset($_POST['haslo']))
 {
     $h = $_POST['haslo'];
     $h = trim($h);
-
+    
     if ($h == '')
     {
-        $recv = "Musisz co¶ wpisaæ!";
+        $recv = "Musisz coÅ› wpisaÄ‡!";
     }
     elseif (isset($_POST['action']) && $_POST['action']=='enc')
     {
-    $h = substr($h,0,24); // truncate
-    $h = escapeshellarg($h);
-        $dec = chop(`perl encode.pl $h`);
-        $recv = "Zakodowane has³o $h ma postaæ '$dec'";
+        $h = substr($h,0,24); // truncate
+        $h = escapeshellarg($h);
+        $dec = chop(`/usr/bin/perl encode.pl $h`);
+        $recv = "Zakodowane hasÅ‚o '$h' ma postaÄ‡ '$dec'";
     }
     else
     {
         $h = substr($h,0,48); // truncate
+print_r("xxx".$h);
         $h = escapeshellarg($h);
-        $dec = chop(`perl decode.pl $h`);
-        $recv = "Dla klucza $h has³o prawdopodobnie brzmi '$dec'";
+print_r("xxx".$h);
+        $dec = chop(`/usr/bin/perl decode.pl $h`);
+        $recv = "Dla klucza '$h' hasÅ‚o prawdopodobnie brzmi '$dec'";
     }
 
     $recv = "<hr><span style='color: #558899; font-weight: bold'>$recv</span><br>";
@@ -31,7 +33,7 @@ if (isset($_POST['haslo']))
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=iso-8859-2">
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
 <title>Platnik - haslo</title>
 <style type="text/css">
 body,a:link,a:visited,td
@@ -57,42 +59,45 @@ span.tt
 </head>
 <body>
 <center>
-<h2>Odzyskiwanie hase³ w P³atniku 5 i 6</h2>
+<h2>Odzyskiwanie haseÅ‚ w PÅ‚atniku 5+</h2>
 </center>
 <?=$recv ?>
 <hr>
-<p>Je¶li zapomnia³e¶/zapomnia³a¶ has³a administratora w Programie P³atnika
-mo¿esz je ³atwo odzyskaæ (dotyczy to tak¿e has³a <b>ostatniej</b> u¿ytej
+<p>JeÅ›li zapomniaÅ‚eÅ›/zapomniaÅ‚aÅ› hasÅ‚a administratora w Programie PÅ‚atnika
+moÅ¼esz je Å‚atwo odzyskaÄ‡ (dotyczy to takÅ¼e hasÅ‚a <b>ostatniej</b> uÅ¼ytej
 bazy danych).
 <p>
 <b>Uwaga</b>: Misie z firmy Koala (ja nie mam z nimi nic wspolnego!) na podstawie ponizszych informacji napisaly program,
 ktory odzyskuje hasla Platnika. Programik jest darmowy i mozna go znalezc tutaj:
 <b><a href="http://koala.pl/Index2.php?page=KoalaRatownik&amp;lang=pl">Koala Ratownik</a></b>
-
-<p>Has³a trzymane s± w rejestrze systemu Windows, has³o administratora w kluczu
-<span class="tt">HKEY_LOCAL_MACHINE\SOFTWARE\PROKOM Software SA\P³atnik\5.01.001\Admin</span>
-w kolejnych warto¶ciach AdmXX (ka¿da zmiana has³a dodaje 1 wpis, <b>aktualne has³o
-znajduje siê w polu AdmXX o najwiêkszej warto¶ci XX</b>).
-Przy instalacji wype³nianych jest kilka warto¶ci pocz±tkowych, do
-Adm1 wpisywana jest aktaulna data, do Adm2 i 3 - imiê i nazwisko
-administratora, do Adm4 pocz±tkowe has³o.
-Przy zmianie has³a do starego dopisywany jest znak '1'. Has³o mo¿e mieæ maksymalnie 24 znaki.
 <p>
-Has³o bazy danych (ostatniej u¿ytej) znajduje siê w kluczu
-<span class="tt">HKEY_LOCAL_MACHINE\SOFTWARE\PROKOM Software SA\P³atnik\5.01.001\Baza</span>,
+<b>Uwaga</b>: Innym darmowym programem, ktÃ³ry potrafi odplÄ…taÄ‡ problemy z PÅ‚anikiem jest od-PlÄ…tnik autorstwa JBW:
+<b>od-<a href="http://www.jbw.pl/pphas/">PlÄ…tnik</a></b>
+<hr>
+<p>HasÅ‚a trzymane sÄ… w rejestrze systemu Windows, hasÅ‚o administratora w kluczu
+<span class="tt">HKEY_LOCAL_MACHINE\SOFTWARE\PROKOM Software SA\PÅ‚atnik\5.01.001\Admin</span>
+w kolejnych wartoÅ›ciach AdmXX (kaÅ¼da zmiana hasÅ‚a dodaje 1 wpis, <b>aktualne hasÅ‚o
+znajduje siÄ™ w polu AdmXX o najwiÄ™kszej wartoÅ›ci XX</b>).
+Przy instalacji wypeÅ‚nianych jest kilka wartoÅ›ci poczÄ…tkowych, do
+Adm1 wpisywana jest aktaulna data, do Adm2 i 3 - imiÄ™ i nazwisko
+administratora, do Adm4 poczÄ…tkowe hasÅ‚o.
+Przy zmianie hasÅ‚a do starego dopisywany jest znak '1'. HasÅ‚o moÅ¼e mieÄ‡ maksymalnie 24 znaki.
+<p>
+HasÅ‚o bazy danych (ostatniej uÅ¼ytej) znajduje siÄ™ w kluczu
+<span class="tt">HKEY_LOCAL_MACHINE\SOFTWARE\PROKOM Software SA\PÅ‚atnik\5.01.001\Baza</span>,
 pole <span class="tt">Jet OLEDB:Database Password</span>.
 <p>
-Hasla s± "zaszyfrowane", to znaczy zakodowane w prosty do odkodowania sposób.
-Aby odtworzyæ has³o mo¿esz skorzystaæ z formularza albo u¿yæ zamieszczonego ni¿ej
+Hasla sÄ… "zaszyfrowane", to znaczy zakodowane w prosty do odkodowania sposÃ³b.
+Aby odtworzyÄ‡ hasÅ‚o moÅ¼esz skorzystaÄ‡ z formularza albo uÅ¼yÄ‡ zamieszczonego niÅ¼ej
 skryptu.
 <p>
-Przyk³adowe has³o wygl±da tak: lzpovzyswnvw (w postaci odkodowanej - "haslo2")
+PrzykÅ‚adowe hasÅ‚o wyglÄ…da tak: lzpovzyswnvw (w postaci odkodowanej - "haslo2")
 <p>
-Tip 1: informacja otrzymana od EMPI'ego: mo¿na zwalczyæ wymuszanie zmiany
-has³a co miesi±c ustawiaj±c w kluczu <span class="tt">HKLM\SOFTWARE\PROKOM Software SA\P³atnik\6.01.001\Parametry\LimitHas³a</span>
-wiêksza liczbê dni wa¿no¶ci has³a (domy¶lnie jest 30).
+Tip 1: informacja otrzymana od EMPI'ego: moÅ¼na zwalczyÄ‡ wymuszanie zmiany
+hasÅ‚a co miesiÄ…c ustawiajÄ…c w kluczu <span class="tt">HKLM\SOFTWARE\PROKOM Software SA\PÅ‚atnik\6.01.001\Parametry\LimitHasÅ‚a</span>
+wiÄ™ksza liczbÄ™ dni waÅ¼noÅ›ci hasÅ‚a (domyÅ›lnie jest 30).
 <p>
-Tip 2: usuwanie hase³ baz MS Access (czyli to w³a¶nie Ciê interesuje je¶li np. przeinstalowa³e¶ system a teraz nie pamiêtasz hase³ do bazy p³atnika)
+Tip 2: usuwanie haseÅ‚ baz MS Access (czyli to wÅ‚aÅ›nie CiÄ™ interesuje jeÅ›li np. przeinstalowaÅ‚eÅ› system a teraz nie pamiÄ™tasz haseÅ‚ do bazy pÅ‚atnika)
 <ul>
 <li><a href="http://www.access.vis.pl/zab001.htm">http://www.access.vis.pl/zab001.htm</a>
 (odpowiednie pliki to:
@@ -103,31 +108,31 @@ i
 <li><a href="http://www.elcomsoft.com/acpr.html">http://www.elcomsoft.com/acpr.html</a>
 </ul>
 <p>
-Tip 3: je¶li wydaje ci siê, ¿e znasz has³o do bazy, a mimo to P³atnik nie chce otworzyæ
-bazy danych - sprawd¼ czy plik .mdb nie ma ustwionego atrybutu "tylko do
+Tip 3: jeÅ›li wydaje ci siÄ™, Å¼e znasz hasÅ‚o do bazy, a mimo to PÅ‚atnik nie chce otworzyÄ‡
+bazy danych - sprawdÅº czy plik .mdb nie ma ustwionego atrybutu "tylko do
 odczytu"
 <p>
 Tip 4: Skrypty przerobione na C++: <a
 href="http://www.mariano.is.net.pl/mariano/index.php?go=platnik">http://www.mariano.is.net.pl/mariano/index.php?go=platnik</a>
 <hr>
-W razie problemów:
+W razie problemÃ³w:
 <ul>
 <li>przeczytaj jeszcze raz to co jest napisane na tej stronie</li>
-<li>przeczytaj <a href='http://rtfm.bsdzine.org'>jak m±drze zadawaæ pytania</a></li>
-<li>napisz do mnie maila z m±drze zadanym pytaniem: <a href="mailto:mg@fork.pl">mg@fork.pl</a></li>
+<li>przeczytaj <a href='http://rtfm.killfile.pl/'>jak mÄ…drze zadawaÄ‡ pytania</a></li>
+<li>napisz do mnie maila z mÄ…drze zadanym pytaniem: <a href="mailto:mg@fork.pl">mg@fork.pl</a></li>
 </ul>
 <hr>
 
 <table border="0">
 <tr>
-<td>dekodowanie has³a:
+<td>dekodowanie hasÅ‚a:
 <td>
 <form action="index.php" method="post">
 <input type="text" name="haslo"><input type="submit" value="ok"><input type="hidden" name="action" value="dec">
 </form>
 
 <tr>
-<td>kodowanie has³a:
+<td>kodowanie hasÅ‚a:
 <td>
 <form action="index.php" method="post">
 <input type="text" name="haslo"><input type="submit" value="ok"><input type="hidden" name="action" value="enc">
