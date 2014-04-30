@@ -14,7 +14,7 @@ if (isset($_POST['haslo']))
     {
         $h = substr($h,0,24); // truncate
         $h = escapeshellarg($h);
-        $dec = chop(`/usr/bin/perl encode.pl $h`);
+        $dec = chop(`/usr/bin/perl encode.pl "$h"`);
         $recv = "Zakodowane hasło '$h' ma postać '$dec'";
     }
     else
@@ -23,7 +23,7 @@ if (isset($_POST['haslo']))
 print_r("xxx".$h);
         $h = escapeshellarg($h);
 print_r("xxx".$h);
-        $dec = chop(`/usr/bin/perl decode.pl $h`);
+        $dec = chop(`/usr/bin/perl decode.pl "$h"`);
         $recv = "Dla klucza '$h' hasło prawdopodobnie brzmi '$dec'";
     }
 
