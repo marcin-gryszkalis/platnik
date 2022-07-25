@@ -11,19 +11,17 @@ if (isset($_POST['haslo']))
     }
     elseif (isset($_POST['action']) && $_POST['action']=='enc')
     {
-        $h = substr($h,0,24); // truncate
+        $h = substr($h,0,1024); // truncate
         $h = escapeshellarg($h);
-        $dec = chop(`/usr/bin/perl encode.pl "$h"`);
-        $recv = "Zakodowane hasło '$h' ma postać '$dec'";
+        $dec = chop(`/usr/bin/perl encode.pl $h`);
+        $recv = "Zakodowane hasło $h ma postać '$dec'";
     }
     else
     {
-        $h = substr($h,0,48); // truncate
-print_r("xxx".$h);
+        $h = substr($h,0,2048); // truncate
         $h = escapeshellarg($h);
-print_r("xxx".$h);
-        $dec = chop(`/usr/bin/perl decode.pl "$h"`);
-        $recv = "Dla klucza '$h' hasło prawdopodobnie brzmi '$dec'";
+        $dec = chop(`/usr/bin/perl decode.pl $h`);
+        $recv = "Dla klucza $h hasło prawdopodobnie brzmi '$dec'";
     }
 
     $recv = "<hr><span style='color: #558899; font-weight: bold'>$recv</span><br>";
