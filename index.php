@@ -1,5 +1,4 @@
-<? // $Id$
-
+<?
 $recv = "";
 if (isset($_POST['haslo']))
 {
@@ -112,8 +111,8 @@ Tip 3: jeśli wydaje ci się, że znasz hasło do bazy, a mimo to Płatnik nie c
 bazy danych - sprawdź czy plik .mdb nie ma ustwionego atrybutu "tylko do
 odczytu"
 <p>
-Tip 4: Skrypty przerobione na C++: <a
-href="http://www.mariano.is.net.pl/mariano/index.php?go=platnik">http://www.mariano.is.net.pl/mariano/index.php?go=platnik</a>
+Tip 4: Skrypty przerobione na C++: <a href="http://www.manobit.com/platnik-haslo/">http://www.manobit.com/platnik-haslo/</a>
+
 <hr>
 W razie problemów:
 <ul>
@@ -154,8 +153,6 @@ W razie problemów:
 </pre>
 <hr>
 <div style="text-align: right"><a href="mailto:mg@fork.pl">mg@fork.pl</a><br>
-<a href="http://validator.w3.org/check?uri=referer">[Valid HTML]</a><br>
-<span style="font-family: monospace; ">$Id$</span>
 </div>
 
 <script type="text/javascript">

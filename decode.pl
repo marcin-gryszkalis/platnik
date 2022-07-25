@@ -1,20 +1,24 @@
 #!/usr/bin/perl -w
-# $Id$
 # mg@fork.pl
+# https://platnik.fork.pl/
+# https://github.com/marcin-gryszkalis/platnik/
+use warnings;
+use strict;
+use Data::Dumper;
 
-$enc = shift;
+my $enc = shift;
 
 sub swap($$)
 {
     $_ = shift;
-    $n = shift;
+    my $n = shift;
     s/(.{$n})(.{$n})/$2$1/g;
     return $_;
 }
 
-$k = "lmnopqrstuvwxyz{";
+my $k = "lmnopqrstuvwxyz{";
 
-@pkey = (
+my @pkey = (
 swap($k, 8),
 swap(swap($k, 4), 1),
 swap(swap($k, 8), 1),
@@ -25,13 +29,17 @@ swap(swap($k, 2), 1),
 swap(swap(swap($k, 4), 2), 1),
 );
 
-@order = (0,1,2,3,4,0,3,5,2,1,5,4,3,6,6,2,4,2,2,4,3,2,7,7);
+my @order = (
+0,1,2,3,4,0,3,5,
+2,1,5,4,3,6,6,2,
+4,2,2,4,3,2,7,7,
+);
 
-$i = 0;
+my $i = 0;
 sub dec($$)
 {
-    $a = index $pkey[$order[$i]], shift;
-    $b = index $pkey[$order[$i]], shift;
+    my $a = index $pkey[$order[$i % 24]], shift;
+    my $b = index $pkey[$order[$i % 24]], shift;
     $i++;
     return chr hex sprintf "%x%x",$b,$a;
 }
